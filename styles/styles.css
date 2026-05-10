@@ -4,21 +4,245 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg: rgb(143, 172, 216);
+    --bg-card: rgba(255, 255, 255, 0.12);
+    --bg-card-hover: rgba(255, 255, 255, 0.18);
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.6);
+    --accent: rgba(255, 255, 255, 0.85);
+    --border: rgba(255, 255, 255, 0.2);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: rgb(143, 172, 216);
-    color: #ffffff;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* ── Hero ── */
+.hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    text-align: center;
+    padding: 4rem 2rem;
 }
 
-h1 {
-    font-size: 1.6rem;
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.6rem;
+}
+
+.hero-sub {
+    font-size: 1rem;
     font-weight: 300;
-    letter-spacing: 0.04em;
+    opacity: 0.8;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.06em;
+}
+
+.hero-links {
+    font-size: 0.8rem;
+    font-weight: 300;
+    opacity: 0.75;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-links a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: opacity 0.2s;
+}
+
+.hero-links a:hover {
+    opacity: 1;
+}
+
+.divider {
+    opacity: 0.4;
+}
+
+/* ── Sections ── */
+.section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 1.4rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ── Cards ── */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1rem;
+    transition: background 0.25s;
+}
+
+.card:hover {
+    background: var(--bg-card-hover);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.subtitle {
+    font-size: 0.78rem;
+    font-weight: 300;
+    opacity: 0.75;
+}
+
+.tech-stack {
+    font-size: 0.72rem;
+    font-weight: 300;
+    opacity: 0.6;
+    font-style: italic;
+}
+
+.card-meta {
+    text-align: right;
+    font-size: 0.75rem;
+    font-weight: 300;
+    opacity: 0.7;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.muted {
+    opacity: 0.55;
+    font-size: 0.7rem;
+}
+
+.card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.card ul li {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.65;
+    opacity: 0.88;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.card ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    opacity: 0.45;
+}
+
+.coursework {
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0.82;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 0.75rem;
+    opacity: 0.9;
+    margin-right: 0.5rem;
+}
+
+/* ── Skills ── */
+.skills-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skill-row {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0.88;
+}
+
+/* ── Scroll animation: fade in from right ── */
+.fade-right {
+    opacity: 0;
+    transform: translateX(48px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Stagger siblings */
+.card:nth-child(2) { transition-delay: 0.1s; }
+.card:nth-child(3) { transition-delay: 0.2s; }
+.card:nth-child(4) { transition-delay: 0.3s; }
+
+/* ── Footer ── */
+footer {
     text-align: center;
-    opacity: 0.92;
+    padding: 3rem 2rem 4rem;
+    font-size: 0.7rem;
+    font-weight: 300;
+    opacity: 0.35;
+    letter-spacing: 0.08em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .card-header {
+        flex-direction: column;
+    }
+    .card-meta {
+        text-align: left;
+    }
 }
