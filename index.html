@@ -134,21 +134,7 @@
         <p>Gwanwoo Kim · 2026</p>
     </footer>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.fade-right').forEach(el => observer.observe(el));
-
-        setTimeout(() => {
-            document.querySelector('.hero').classList.add('shrunk');
-        }, 500);
-    </script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>

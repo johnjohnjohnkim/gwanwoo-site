@@ -34,7 +34,7 @@ body {
     justify-content: center;
     text-align: center;
     padding: 4rem 2rem;
-    transition: min-height 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: min-height 4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero.shrunk {
