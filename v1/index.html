@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gwanwoo Kim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Gwanwoo Kim</h1>
+            <p class="hero-sub">Computer Science Student @ Western University</p>
+            <div class="hero-links">
+                <a href="mailto:gwanwookim2004@gmail.com">gwanwookim2004@gmail.com</a>
+                <span class="divider">·</span>
+                <a href="https://www.linkedin.com/in/gwanwookim/" target="_blank">linkedin.com/in/gwanwookim</a>
+                <span class="divider">·</span>
+                <span>437-974-2018</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="card fade-right">
+            <div class="card-header">
+                <div>
+                    <h3>Western University</h3>
+                    <p class="subtitle">Bachelor of Science in Computer Science</p>
+                </div>
+                <div class="card-meta">
+                    <span>London, ON</span>
+                    <span class="muted">Expected May 2027</span>
+                </div>
+            </div>
+            <p class="coursework"><span class="label">Coursework:</span> Machine Learning · Software Design Patterns · Data Structures &amp; Algorithms · Computer Architecture · Databases · Operating Systems</p>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="card fade-right">
+            <div class="card-header">
+                <div>
+                    <h3>Research Technician</h3>
+                    <p class="subtitle">Ontario Tech University — Dr. Jaho Seo, Faculty of Engineering and Applied Science</p>
+                </div>
+                <div class="card-meta">
+                    <span>Oshawa, ON</span>
+                    <span class="muted">May 2026 – Aug 2026</span>
+                </div>
+            </div>
+            <ul>
+                <li>Annotating image datasets using CVAT to label recyclable waste metals by shape and size, building training data for a computer vision model used in facility waste detection</li>
+                <li>Contributing to the development of an AI-based waste metal detection system using PyTorch, supporting research infrastructure through data migration, API development, and cross-platform application tooling</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="card fade-right">
+            <div class="card-header">
+                <div>
+                    <h3>RBCheck</h3>
+                    <p class="tech-stack">Python · FastAPI · PostgreSQL · Docker · Alembic · OAuth2 · HTML/CSS/JavaScript</p>
+                </div>
+            </div>
+            <ul>
+                <li>Built a full-stack personal finance tool to address the lack of granular spending insights in Canadian banking apps, querying and joining multiple tables in the macOS iMessage SQLite database (chat.db) to extract RBC transaction notifications</li>
+                <li>Wrote regex-based parsers to extract merchant names, amounts, dates, and transaction types from SMS text, handling structural differences between debit and credit card alert formats</li>
+                <li>Developed a Dockerized FastAPI backend with PostgreSQL storage, Alembic migrations, and OAuth2 authentication, serving parsed transaction data to a web dashboard displaying daily, weekly, and monthly spending breakdowns</li>
+            </ul>
+        </div>
+
+        <div class="card fade-right">
+            <div class="card-header">
+                <div>
+                    <h3>YOLight</h3>
+                    <p class="tech-stack">Python · OpenCV · Ultralytics (YOLO) · Intel RealSense · Govee LAN API</p>
+                </div>
+            </div>
+            <ul>
+                <li>Built a camera-based smart lighting system using an Intel RealSense camera and YOLO person detection to track room occupancy, automatically controlling Govee smart lights via a custom LAN API integration script</li>
+                <li>Implemented directional tracking to distinguish between a person entering or exiting a room, with configurable brightness thresholds for automated light adjustments to reduce energy consumption</li>
+            </ul>
+        </div>
+
+        <div class="card fade-right">
+            <div class="card-header">
+                <div>
+                    <h3>Household Housing Burden Modeling</h3>
+                    <p class="tech-stack">Python · scikit-learn · XGBoost · SHAP</p>
+                </div>
+            </div>
+            <ul>
+                <li>Preprocessed a confidential Canadian household survey dataset of ~57K records and 1,100+ features, handling missing values, encoding categorical variables, and performing feature selection</li>
+                <li>Trained Elastic Net and XGBoost regressors to predict a calculated Housing Burden Ratio; XGBoost outperformed by 19 points in R²; applied PCA and UMAP for dimensionality reduction</li>
+                <li>Applied SHAP value analysis to interpret model predictions, identifying household income-related features as the strongest predictors of housing burden</li>
+            </ul>
+        </div>
+
+        <div class="card fade-right">
+            <div class="card-header">
+                <div>
+                    <h3>PiBlock</h3>
+                    <p class="tech-stack">C++17 · DNS · Web Dashboard</p>
+                </div>
+            </div>
+            <ul>
+                <li>Developed a network-level ad blocker in C++17 that intercepts and filters DNS queries against a 70,000+ domain blocklist, designed to run on a Raspberry Pi and block ads across all devices on a local network</li>
+                <li>Built a companion web dashboard to visualize blocked requests and manage filtering rules, exposing the blocker's state through a lightweight backend interface</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="card fade-right skills-card">
+            <div class="skill-row">
+                <span class="label">Languages</span>
+                <span>Python · C · C++ · SQL · HTML/CSS</span>
+            </div>
+            <div class="skill-row">
+                <span class="label">Tools &amp; Technologies</span>
+                <span>Git · PostgreSQL · Docker · FastAPI · REST APIs · PyTorch · OpenCV · Ultralytics · CVAT · Linux</span>
+            </div>
+            <div class="skill-row">
+                <span class="label">Concepts</span>
+                <span>Data Structures &amp; Algorithms · Machine Learning · Databases · Operating Systems · Computer Architecture</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Gwanwoo Kim · 2026</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
