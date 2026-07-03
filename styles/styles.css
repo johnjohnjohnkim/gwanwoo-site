@@ -365,6 +365,24 @@ body::before {
     transform: translateY(-4px);
 }
 
+.project-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-arrow {
+    display: inline-block;
+    opacity: 0.5;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.project-link:hover .project-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+}
+
 .project h3 {
     font-size: 1rem;
     font-weight: 600;
