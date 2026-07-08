@@ -4,195 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gwanwoo Kim</title>
-    <meta name="description" content="Gwanwoo Kim — Computer Science student at Western University. Projects in ML, computer vision, and full-stack development.">
+    <meta name="description" content="Gwanwoo Kim — Computer Science student at Western University. Full-stack, computer vision, and systems side projects.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
-    <div class="layout">
+    <div class="scroll-progress" aria-hidden="true"></div>
 
-        <!-- ── Sidebar ── -->
-        <aside class="sidebar">
-            <div class="sidebar-inner">
-                <header class="brand">
-                    <h1>Gwanwoo&nbsp;Kim</h1>
-                    <p class="role">Computer Science Student<br><span>@ Western University</span></p>
-                </header>
+    <!-- ── Top nav ── -->
+    <nav class="topnav">
+        <a class="topnav-name" href="#top">gwanwoo<span>.dev</span></a>
+        <div class="topnav-links">
+            <a href="#work" data-spy="work">Work</a>
+            <a href="#more" data-spy="more">More</a>
+            <a href="#background" data-spy="background">Background</a>
+            <a href="#contact" data-spy="contact">Contact</a>
+        </div>
+        <a class="topnav-cta" href="mailto:gwanwookim2004@gmail.com">Say hi</a>
+    </nav>
 
-                <nav class="nav" aria-label="Section navigation">
-                    <a href="#about" class="nav-link" data-target="about"><span class="nav-num">01</span> About</a>
-                    <a href="#education" class="nav-link" data-target="education"><span class="nav-num">02</span> Education</a>
-                    <a href="#experience" class="nav-link" data-target="experience"><span class="nav-num">03</span> Experience</a>
-                    <a href="#projects" class="nav-link" data-target="projects"><span class="nav-num">04</span> Projects</a>
-                    <a href="#skills" class="nav-link" data-target="skills"><span class="nav-num">05</span> Skills</a>
-                </nav>
+    <main id="top">
 
-                <div class="contacts">
-                    <a href="mailto:gwanwookim2004@gmail.com">gwanwookim2004@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/gwanwookim/" target="_blank" rel="noopener">linkedin.com/in/gwanwookim</a>
-                    <a href="tel:+14379742018">437-974-2018</a>
-                </div>
+        <!-- ── Hero ── -->
+        <header class="hero">
+            <p class="hero-kicker load-item">Gwanwoo Kim — Computer Science @ Western University</p>
+            <h1 class="hero-title">
+                <span class="load-item">Building tools that make</span>
+                <span class="load-item">a difference in my daily life<span class="cursor" aria-hidden="true">_</span></span>
+            </h1>
+            <p class="hero-sub load-item">
+                A bank that won't show spending insights. Lights that don't need
+                a switch anymore. My side projects start as everyday frictions
+                and end as working systems — vision pipelines, APIs, dashboards.
+            </p>
+            <div class="hero-actions load-item">
+                <a class="btn btn-solid" href="#work">See the work ↓</a>
+                <a class="btn" href="https://github.com/johnjohnjohnkim" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn" href="https://www.linkedin.com/in/gwanwookim/" target="_blank" rel="noopener">LinkedIn</a>
             </div>
-        </aside>
+        </header>
 
-        <!-- ── Main ── -->
-        <main class="content">
+        <!-- ── Featured work ── -->
+        <section id="work" class="section">
+            <div class="section-head reveal">
+                <h2>Featured work</h2>
+                <p>Two projects, built end-to-end.</p>
+            </div>
 
-            <!-- About -->
-            <section id="about" class="block reveal">
-                <p class="block-eyebrow">01 — About</p>
-                <p class="lede">
-                    I'm a Computer Science student at Western University. I like building things
-                    that help my everyday life and are actually practical: computer-vision pipelines,
-                    smart-home automation, and full-stack tools that make messy data useful. If you're
-                    a recruiter, please hire me.
-                </p>
-            </section>
-
-            <!-- Education -->
-            <section id="education" class="block reveal">
-                <p class="block-eyebrow">02 — Education</p>
-                <article class="panel">
-                    <div class="panel-top">
-                        <div>
-                            <h3>Western University</h3>
-                            <p class="panel-sub">Bachelor of Science in Computer Science</p>
+            <!-- Case study: RBCheck -->
+            <article class="case reveal">
+                <div class="case-label"><span>01</span>RBCheck</div>
+                <div class="case-grid">
+                    <div class="case-text">
+                        <h3>A spending dashboard built from bank text messages</h3>
+                        <p class="case-lede">
+                            Canadian banking apps give you almost no spending insight — but RBC
+                            texts you every transaction. RBCheck mines those SMS alerts out of the
+                            macOS iMessage database and turns them into a live personal finance
+                            dashboard.
+                        </p>
+                        <ul class="case-points">
+                            <li>Queries the iMessage <code>chat.db</code> SQLite database directly, extracting RBC alerts embedded inside binary <code>attributedBody</code> blobs</li>
+                            <li>Regex parsers classify deposits, withdrawals, card purchases, payments, and refunds — pulling amount and merchant from raw SMS text</li>
+                            <li>FastAPI + PostgreSQL backend with endpoints for daily / weekly / rolling / monthly summaries, plus date-range, merchant, and price filters</li>
+                            <li>Dedup pass drops withdrawal ↔ credit-card-payment pairs that land within 60 seconds of each other, even across poll cycles</li>
+                            <li>Chart.js dashboard client, Dockerized server, CORS-scoped to gwanwoo.dev</li>
+                        </ul>
+                        <div class="chips">
+                            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">SQLAlchemy</span><span class="chip">SQLite</span><span class="chip">Docker</span><span class="chip">JavaScript</span><span class="chip">Chart.js</span>
                         </div>
-                        <div class="panel-meta">
-                            <span>London, ON</span>
-                            <span class="muted">Expected May 2027</span>
+                        <div class="case-links">
+                            <a class="btn btn-solid" href="https://rbcheckdemo.gwanwoo.dev/" target="_blank" rel="noopener">Live demo ↗</a>
+                            <a class="btn" href="https://github.com/johnjohnjohnkim/RBCheck" target="_blank" rel="noopener">Server code</a>
+                            <a class="btn" href="https://github.com/johnjohnjohnkim/RBCheck-client" target="_blank" rel="noopener">Client code</a>
                         </div>
                     </div>
-                    <p class="coursework">
-                        <span class="tag-label">Coursework</span>
-                        Machine Learning · Software Design Patterns · Data Structures &amp; Algorithms · Computer Architecture · Databases · Operating Systems
+
+                    <div class="case-visual">
+                        <div class="demo-card" id="sms-demo">
+                            <p class="demo-title">How a text becomes a transaction</p>
+                            <div class="sms-bubble">
+                                <span class="sms-sender">RBC Alerts</span>
+                                <span class="sms-text" id="sms-text"></span>
+                            </div>
+                            <div class="parse-arrow" aria-hidden="true">↓ regex parser</div>
+                            <div class="parse-row" id="parse-row">
+                                <div class="parse-field"><span class="parse-key">type</span><span class="parse-val" id="pv-type">—</span></div>
+                                <div class="parse-field"><span class="parse-key">amount</span><span class="parse-val" id="pv-amount">—</span></div>
+                                <div class="parse-field"><span class="parse-key">merchant</span><span class="parse-val" id="pv-place">—</span></div>
+                            </div>
+                            <p class="demo-note">Simulated messages — same formats the real parser handles.</p>
+                        </div>
+
+                        <div class="pipeline" aria-label="RBCheck architecture">
+                            <div class="pipe-step">iMessage chat.db</div>
+                            <div class="pipe-joint" aria-hidden="true">→</div>
+                            <div class="pipe-step">poller + parser</div>
+                            <div class="pipe-joint" aria-hidden="true">→</div>
+                            <div class="pipe-step">FastAPI · Postgres</div>
+                            <div class="pipe-joint" aria-hidden="true">→</div>
+                            <div class="pipe-step">dashboard</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Case study: YOLight -->
+            <article class="case reveal">
+                <div class="case-label"><span>02</span>YOLight</div>
+                <div class="case-grid case-grid-flip">
+                    <div class="case-text">
+                        <h3>Lights that turn on because a neural net saw you</h3>
+                        <p class="case-lede">
+                            YOLight points a YOLOv8 model at a webcam and drives Govee smart
+                            lights over the local network — walk in, lights on; leave, lights off.
+                            No motion sensors, no cloud account: it speaks Govee's UDP LAN
+                            protocol directly.
+                        </p>
+                        <ul class="case-points">
+                            <li>Real-time person detection with Ultralytics YOLOv8 + OpenCV, on CUDA when a GPU is available</li>
+                            <li>Discovers lights via multicast (<code>239.255.255.250</code>) and sends raw per-device UDP control packets — no vendor SDK</li>
+                            <li>The interesting bug: brief occlusions (reaching behind a door, ducking behind a chair) read as "room empty" and cut the lights</li>
+                            <li>Fix: an occupancy state machine — instant on, 3-second debounced off — cut false turn-offs from ~31/day to ~9/day, a ~70% reduction</li>
+                            <li>Documented V2–V5 roadmap: doorway occupancy counting, RealSense depth sensing for darkness, pose-based gesture control</li>
+                        </ul>
+                        <div class="chips">
+                            <span class="chip">Python</span><span class="chip">YOLOv8</span><span class="chip">PyTorch</span><span class="chip">OpenCV</span><span class="chip">UDP sockets</span><span class="chip">Pydantic</span>
+                        </div>
+                        <div class="case-links">
+                            <a class="btn" href="https://github.com/johnjohnjohnkim/YOLight" target="_blank" rel="noopener">View code</a>
+                        </div>
+                    </div>
+
+                    <div class="case-visual">
+                        <div class="terminal" id="yolight-term">
+                            <div class="terminal-bar">
+                                <span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span>
+                                <span class="terminal-title">tracker.py — simulated output</span>
+                            </div>
+                            <pre class="terminal-body" id="term-body" aria-live="off"></pre>
+                        </div>
+
+                        <div class="pipeline" aria-label="YOLight architecture">
+                            <div class="pipe-step">webcam</div>
+                            <div class="pipe-joint" aria-hidden="true">→</div>
+                            <div class="pipe-step">YOLOv8</div>
+                            <div class="pipe-joint" aria-hidden="true">→</div>
+                            <div class="pipe-step">state machine</div>
+                            <div class="pipe-joint" aria-hidden="true">→</div>
+                            <div class="pipe-step">Govee · UDP</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ── More work ── -->
+        <section id="more" class="section">
+            <div class="section-head reveal">
+                <h2>More work</h2>
+                <p>Smaller and earlier projects.</p>
+            </div>
+            <div class="more-grid">
+                <article class="more-card reveal">
+                    <h3>Household Housing Burden Modeling</h3>
+                    <p class="more-stack">Python · scikit-learn · XGBoost · SHAP</p>
+                    <p>
+                        Preprocessed a confidential Canadian household survey (~57K records,
+                        1,100+ features) and trained Elastic Net and XGBoost regressors to
+                        predict a Housing Burden Ratio — XGBoost led by 19 points in R².
+                        Used SHAP analysis to identify income-related features as the
+                        strongest predictors.
                     </p>
                 </article>
-            </section>
+                <article class="more-card reveal">
+                    <h3>PiBlock</h3>
+                    <p class="more-stack">C++17 · DNS · Web dashboard</p>
+                    <p>
+                        Network-level ad blocker in C++17 that filters DNS queries against a
+                        70,000+ domain blocklist, built to run on a Raspberry Pi and cover
+                        every device on the network, with a companion dashboard for blocked
+                        requests and rules.
+                    </p>
+                </article>
+            </div>
+        </section>
 
-            <!-- Experience -->
-            <section id="experience" class="block reveal">
-                <p class="block-eyebrow">03 — Experience</p>
-                <div class="timeline">
-                    <article class="t-item">
-                        <div class="t-dot" aria-hidden="true"></div>
-                        <div class="panel">
-                            <div class="panel-top">
-                                <div>
-                                    <h3>Research Technician</h3>
-                                    <p class="panel-sub">Ontario Tech University — Dr. Jaho Seo, Faculty of Engineering &amp; Applied Science</p>
-                                </div>
-                                <div class="panel-meta">
-                                    <span>Oshawa, ON</span>
-                                    <span class="muted">May 2026 – Aug 2026</span>
-                                </div>
-                            </div>
-                            <ul class="bullets">
-                                <li>Annotating image datasets using CVAT to label recyclable waste metals by shape and size, building training data for a computer vision model used in facility waste detection</li>
-                                <li>Contributing to the development of an AI-based waste metal detection system using PyTorch, supporting research infrastructure through data migration, API development, and cross-platform application tooling</li>
-                            </ul>
-                        </div>
-                    </article>
+        <!-- ── Background ── -->
+        <section id="background" class="section">
+            <div class="section-head reveal">
+                <h2>Background</h2>
+            </div>
+
+            <div class="bg-grid">
+                <article class="bg-card reveal">
+                    <p class="bg-tag">Experience</p>
+                    <h3>Research Technician</h3>
+                    <p class="bg-sub">Ontario Tech University — Dr. Jaho Seo, Faculty of Engineering &amp; Applied Science</p>
+                    <p class="bg-meta">Oshawa, ON · May 2026 – Aug 2026</p>
+                    <ul class="case-points">
+                        <li>Annotating image datasets in CVAT to label recyclable waste metals by shape and size — training data for a computer vision model used in facility waste detection</li>
+                        <li>Contributing to an AI-based waste metal detection system in PyTorch: data migration, API development, and cross-platform tooling</li>
+                    </ul>
+                </article>
+
+                <article class="bg-card reveal">
+                    <p class="bg-tag">Education</p>
+                    <h3>Western University</h3>
+                    <p class="bg-sub">BSc, Computer Science</p>
+                    <p class="bg-meta">London, ON · Expected May 2027</p>
+                    <p class="bg-course">Machine Learning · Software Design Patterns · Data Structures &amp; Algorithms · Computer Architecture · Databases · Operating Systems</p>
+                </article>
+            </div>
+
+            <div class="skills reveal">
+                <div class="skill-row">
+                    <span class="skill-label">Languages</span>
+                    <div class="chips"><span class="chip">Python</span><span class="chip">C</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span></div>
                 </div>
-            </section>
-
-            <!-- Projects -->
-            <section id="projects" class="block reveal">
-                <p class="block-eyebrow">04 — Projects</p>
-                <div class="grid">
-
-                    <a class="project project-link" href="https://rbcheckdemo.gwanwoo.dev/" target="_blank" rel="noopener">
-                        <h3>RBCheck <span class="project-arrow" aria-hidden="true">↗</span></h3>
-                        <p class="stack">Python · FastAPI · PostgreSQL · Docker · Alembic · OAuth2 · JS</p>
-                        <ul class="bullets">
-                            <li>Built a full-stack personal finance tool to address the lack of granular spending insights in Canadian banking apps, querying and joining multiple tables in the macOS iMessage SQLite database (chat.db) to extract RBC transaction notifications</li>
-                            <li>Wrote regex-based parsers to extract merchant names, amounts, dates, and transaction types from SMS text, handling structural differences between debit and credit card alert formats</li>
-                            <li>Developed a Dockerized FastAPI backend with PostgreSQL storage, Alembic migrations, and OAuth2 authentication, serving parsed transaction data to a web dashboard with daily, weekly, and monthly spending breakdowns</li>
-                        </ul>
-                    </a>
-
-                    <article class="project">
-                        <h3>YOLight</h3>
-                        <p class="stack">Python · OpenCV · Ultralytics (YOLO) · Intel RealSense · Govee LAN API</p>
-                        <ul class="bullets">
-                            <li>Built a camera-based smart lighting system using an Intel RealSense camera and YOLO person detection to track room occupancy, automatically controlling Govee smart lights via a custom LAN API integration script</li>
-                            <li>Implemented directional tracking to distinguish between a person entering or exiting a room, with configurable brightness thresholds for automated light adjustments to reduce energy consumption</li>
-                        </ul>
-                    </article>
-
-                    <article class="project">
-                        <h3>Household Housing Burden Modeling</h3>
-                        <p class="stack">Python · scikit-learn · XGBoost · SHAP</p>
-                        <ul class="bullets">
-                            <li>Preprocessed a confidential Canadian household survey dataset of ~57K records and 1,100+ features, handling missing values, encoding categorical variables, and performing feature selection</li>
-                            <li>Trained Elastic Net and XGBoost regressors to predict a calculated Housing Burden Ratio; XGBoost outperformed by 19 points in R²; applied PCA and UMAP for dimensionality reduction</li>
-                            <li>Applied SHAP value analysis to interpret model predictions, identifying household income-related features as the strongest predictors of housing burden</li>
-                        </ul>
-                    </article>
-
-                    <article class="project">
-                        <h3>PiBlock</h3>
-                        <p class="stack">C++17 · DNS · Web Dashboard</p>
-                        <ul class="bullets">
-                            <li>Developed a network-level ad blocker in C++17 that intercepts and filters DNS queries against a 70,000+ domain blocklist, designed to run on a Raspberry Pi and block ads across all devices on a local network</li>
-                            <li>Built a companion web dashboard to visualize blocked requests and manage filtering rules, exposing the blocker's state through a lightweight backend interface</li>
-                        </ul>
-                    </article>
-
+                <div class="skill-row">
+                    <span class="skill-label">Tools</span>
+                    <div class="chips"><span class="chip">Git</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">FastAPI</span><span class="chip">SQLAlchemy</span><span class="chip">PyTorch</span><span class="chip">OpenCV</span><span class="chip">Ultralytics</span><span class="chip">CVAT</span><span class="chip">Linux</span></div>
                 </div>
-            </section>
-
-            <!-- Skills -->
-            <section id="skills" class="block reveal">
-                <p class="block-eyebrow">05 — Skills</p>
-                <div class="skills">
-                    <div class="skill-group">
-                        <span class="tag-label">Languages</span>
-                        <div class="chips">
-                            <span class="chip">Python</span>
-                            <span class="chip">C</span>
-                            <span class="chip">C++</span>
-                            <span class="chip">SQL</span>
-                            <span class="chip">HTML/CSS</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="tag-label">Tools &amp; Technologies</span>
-                        <div class="chips">
-                            <span class="chip">Git</span>
-                            <span class="chip">PostgreSQL</span>
-                            <span class="chip">Docker</span>
-                            <span class="chip">FastAPI</span>
-                            <span class="chip">REST APIs</span>
-                            <span class="chip">PyTorch</span>
-                            <span class="chip">OpenCV</span>
-                            <span class="chip">Ultralytics</span>
-                            <span class="chip">CVAT</span>
-                            <span class="chip">Linux</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <span class="tag-label">Concepts</span>
-                        <div class="chips">
-                            <span class="chip">Data Structures &amp; Algorithms</span>
-                            <span class="chip">Machine Learning</span>
-                            <span class="chip">Databases</span>
-                            <span class="chip">Operating Systems</span>
-                            <span class="chip">Computer Architecture</span>
-                        </div>
-                    </div>
+                <div class="skill-row">
+                    <span class="skill-label">Concepts</span>
+                    <div class="chips"><span class="chip">Data Structures &amp; Algorithms</span><span class="chip">Machine Learning</span><span class="chip">Databases</span><span class="chip">Operating Systems</span><span class="chip">Computer Architecture</span></div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <footer class="content-footer">
-                <p>Gwanwoo Kim · 2026</p>
-            </footer>
+        <!-- ── Contact ── -->
+        <footer id="contact" class="contact">
+            <p class="contact-kicker reveal">Open to internships &amp; new-grad conversations</p>
+            <a class="contact-email reveal" href="mailto:gwanwookim2004@gmail.com">gwanwookim2004@gmail.com</a>
+            <div class="contact-links reveal">
+                <a href="https://github.com/johnjohnjohnkim" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/gwanwookim/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="tel:+14379742018">437-974-2018</a>
+            </div>
+            <p class="contact-fine">Gwanwoo Kim · 2026</p>
+        </footer>
 
-        </main>
-    </div>
+    </main>
 
     <script src="js/main.js"></script>
 
